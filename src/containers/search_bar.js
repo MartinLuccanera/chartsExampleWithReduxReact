@@ -23,10 +23,21 @@ export default class SearchBar extends Component {
         this.setState({ term: event.target.value });
     }
 
+    /**
+     * This is to prevent the browser to try to submit the form when pressing 'enter' os clicking 'submit' button.
+     * That behavior is the default one when dealing with a <form/>
+     *
+     * @param event
+     */
+    onFormSubmit(event) {
+        event.preventDefault(); 
+    }
+
     render() {
         {/*input-group is a bootstrap css*/}
         return (
-            <form className="input-group">
+            <form onSubmit={this.onFormSubmit}
+                  className="input-group">
                 {/*If we pass the onInputChange like this and the function onOnputChange uses 'this' we have
                     the wrong context. 'this' is gonna error saying something about not having 'setState'.
                     To solve it, we can either do:
