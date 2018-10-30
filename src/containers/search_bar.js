@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 /* At the top of the app we are gonna have a search bar. Is gonna be responsible for showing us the search input and
  * a search button. It's also gonna be responsible for calling an action creator in redux (whenever we type a name and
  * click on search).
+ * We will also have 'Middleware'. They are functions that take an action and (depending on the action's type and payload
+ * or any other number of factors) it can choose between letting the action pass through, manipulate it, log it or stop
+ * it altogether BEFORE the actions reach any reducer. They are kinds of gatekeepers of sorts. THey stop any action, inspect
+ * it and decide weather to manipulate it, stop it or whatever. Via intercepting actions we can do many things.
+ * In summary, middlewares can modify actions (actions affect redux's state). We can have 0..n middlewares.
  */
 export default class SearchBar extends Component {
     //We do this constructor thing to initiate the component-level state (not the redux state).
@@ -38,7 +43,7 @@ export default class SearchBar extends Component {
         return (
             <form onSubmit={this.onFormSubmit}
                   className="input-group">
-                {/*If we pass the onInputChange like this and the function onOnputChange uses 'this' we have
+                {/*If we pass the onInputChange like this and the function onInputChange uses 'this' we have
                     the wrong context. 'this' is gonna error saying something about not having 'setState'.
                     To solve it, we can either do:
                     onChange={() => this.onInputChange()} (like we did before)
