@@ -6,7 +6,8 @@ import React, { Component } from 'react';
  * or any other number of factors) it can choose between letting the action pass through, manipulate it, log it or stop
  * it altogether BEFORE the actions reach any reducer. They are kinds of gatekeepers of sorts. THey stop any action, inspect
  * it and decide weather to manipulate it, stop it or whatever. Via intercepting actions we can do many things.
- * In summary, middlewares can modify actions (actions affect redux's state). We can have 0..n middlewares.
+ * In summary, middlewares can modify actions (actions affect redux's state). We can have 0..n middlewares (We are gonna
+ * use them for AJAX requests).
  */
 export default class SearchBar extends Component {
     //We do this constructor thing to initiate the component-level state (not the redux state).
