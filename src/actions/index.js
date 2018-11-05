@@ -10,9 +10,10 @@ export const FETCH_WEATHER = 'FETCH_WEATHER';
 export function fetchWeather(city) {
     //We can search through the documentation and list all of them in a dropdown, pass em as arguments, etc.
     const url = `${ROOT_URL}&q=${city},us`;
-    //axios returns a promise (or request)
+    //axios returns a promise (or request) from an API
     const request = axios.get(url);
 
+    //We pass the promise to the action's payload
      return {
          type: FETCH_WEATHER,
          payload: request
